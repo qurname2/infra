@@ -7,10 +7,7 @@
 	"disk_size": "",
 	"disk_type": "",
 	"image_description": "",
-	"network": "",
-	"tags": [
-			"puma-server"
-	]
+	"network": ""
   },
 
    "builders": [
@@ -27,7 +24,7 @@
 	"disk_type": "{{ user `disk_type` }}",
 	"image_description": "{{ user `image_description` }}",
 	"network": "{{ user `network` }}",
-	"tags": "{{ user `tags` }}"
+	"tags": ["puma-server"]
     }
 ],
 
