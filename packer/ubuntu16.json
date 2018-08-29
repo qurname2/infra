@@ -8,7 +8,9 @@
 	"disk_type": "",
 	"image_description": "",
 	"network": "",
-	"tags": ["puma-server"]
+	"tags": [
+			"puma-server"
+	]
   },
 
    "builders": [
@@ -30,10 +32,10 @@
 ],
 
 "provisioners": [
-      {
+		{
         "type": "shell",
         "script": "scripts/install_ruby.sh"
-      },
+		},
 		{
          "type": "shell",
          "script": "scripts/install_mongodb.sh",
@@ -42,7 +44,28 @@
 		{
 		 "type": "shell",
 		 "script": "scripts/deploy.sh"
+		},
+		{
+         "destination": "/home/appuser/reddit/run.sh",
+         "source": "scripts/run.sh",
+         "type": "file"
+		},
+		{
+		 "type": "shell",
+		 "inline": ["chmod +x /home/appuser/reddit/run.sh"]
+		},
+		{
+		 "destination": "/home/appuser/puma.service",
+		 "source": "files/puma.service",
+		 "type": "file"
+		},
+		{
+		 "type": "shell",
+		 "inline": ["sudo cp /home/appuser/puma.service /etc/systemd/system/puma.service"]
+		},
+		{
+		 "type": "shell",
+		 "inline": ["sudo systemctl enable puma"]
 		}
-		
 ]
 }
