@@ -24,7 +24,10 @@
 	"disk_type": "{{ user `disk_type` }}",
 	"image_description": "{{ user `image_description` }}",
 	"network": "{{ user `network` }}",
-	"tags": ["puma-server"]
+	"tags": [
+			"puma-server",
+			"test-tag"
+	]
     }
 ],
 

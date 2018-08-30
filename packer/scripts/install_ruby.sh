@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 #because i use sudo before this script, i need add user appuser in group rvm and make . /etc/profile in deploy.sh
 sudo apt-get update
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
