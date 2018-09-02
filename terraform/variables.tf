@@ -18,3 +18,6 @@ variable disk_image {
 variable private_key {
   description = "This is key using provisioner for ssh connection to instance"
 }
+variable port {
+  description = "Tcp port for puma server"
+}
