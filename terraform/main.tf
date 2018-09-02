@@ -9,7 +9,6 @@ resource "google_compute_instance" "app" {
   zone         = "europe-west1-b"
   tags         = ["reddit-app"]
 
-  #boot disk
   boot_disk {
     initialize_params {
       image = "${var.disk_image}"
