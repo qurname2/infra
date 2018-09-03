@@ -30,8 +30,14 @@ resource "google_compute_instance" "app" {
     network = "default"
 
     #use ephemeral IP for access from internet
-    access_config {}
-  }
+    access_config {
+         nat_ip = "${google_compute_address.app_ip.address}"
+   }
+}
+}
+
+resource "google_compute_address" "app_ip" {
+             name = "reddit-app-ip"
 }
 
 resource "google_compute_firewall" "firewall_puma" {
@@ -47,4 +53,16 @@ resource "google_compute_firewall" "firewall_puma" {
 
   #rule apply for instance with tag 
   target_tags = ["reddit-app"]
+}
+
+resource "google_compute_firewall" "firewall_ssh" {
+  name    = "default-allow-ssh"
+  network = "default"
+
+  allow {
+    protocol = "tcp"
+    ports    = ["${var.ssh_port}"]
+  }
+
+  source_ranges = ["0.0.0.0/0"]
 }

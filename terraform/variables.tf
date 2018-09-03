@@ -21,3 +21,6 @@ variable private_key {
 variable port {
   description = "Tcp port for puma server"
 }
+variable ssh_port {
+  description = "Test_description"
+}
