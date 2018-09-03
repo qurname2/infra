@@ -26,18 +26,27 @@ resource "google_compute_instance" "app" {
     private_key = "${file(var.private_key)}"
   }
 
+  provisioner "file" {
+    source      = "files/puma.service"
+    destination = "/tmp/puma.service"
+  }
+
+  provisioner "remote-exec" {
+    script = "files/run.sh"
+  }
+
   network_interface {
     network = "default"
 
     #use ephemeral IP for access from internet
     access_config {
-         nat_ip = "${google_compute_address.app_ip.address}"
-   }
-}
+      nat_ip = "${google_compute_address.app_ip.address}"
+    }
+  }
 }
 
 resource "google_compute_address" "app_ip" {
-             name = "reddit-app-ip"
+  name = "reddit-app-ip"
 }
 
 resource "google_compute_firewall" "firewall_puma" {
