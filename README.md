@@ -13,8 +13,5 @@
 
 * TODO: Why did i specify machine_type in PackerFile, packer create image, but gcloud don't use him, when create image. Do you know answer?
 
-## Create packer image with mongodb
-    packer build -var 'project_id=...' -var 'source_image=...' -var 'disk_size=..' -var 'image_description=...' db.json
-
-## Create packer image with ruby
-    packer build -var 'project_id=...' -var 'source_image=...' -var 'disk_size=..' -var 'image_description=...' app.json
+## Create packer image with something.json
+    packer build -var 'project_id=...' -var 'source_image=...' -var 'disk_size=..' -var 'image_description=...' example.json
