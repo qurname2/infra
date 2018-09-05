@@ -19,5 +19,5 @@ module "db" {
 module "vpc" {
   source   = "modules/vpc"
   ssh_port = "${var.ssh_port}"
-  source_ranges = ["185.29.130.2/32"]
+  source_ranges = ["${var.allowed_ip}"]
 }
