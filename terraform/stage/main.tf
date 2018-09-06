@@ -3,6 +3,12 @@ provider "google" {
   region  = "${var.region}"
 }
 
+terraform {
+  backend  "gcs" {
+    prefix = "stage/terraform"
+  }
+}
+
 module "app" {
   source          = "../modules/app"
   public_key_path = "${var.public_key_path}"
@@ -17,7 +23,12 @@ module "db" {
 }
 
 module "vpc" {
-  source   = "../modules/vpc"
-  ssh_port = "${var.ssh_port}"
+  source        = "../modules/vpc"
+  ssh_port      = "${var.ssh_port}"
   source_ranges = ["${var.allowed_ip}"]
+}
+
+module "storage" {
+  source = "../modules/storage"
+  project = "${var.project}"
 }

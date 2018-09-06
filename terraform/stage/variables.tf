@@ -33,3 +33,7 @@ variable db_disk_image {
 variable allowed_ip {
   description = "allowed ip"
 }
+variable bucket_name {
+  description = "name23"
+  default = "sport-kit"
+}
