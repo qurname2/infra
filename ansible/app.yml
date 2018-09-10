@@ -1,0 +1,8 @@
+- name: Config app
+  hosts: app
+  become: true
+  tags: app-tag
+  gather_facts: no
+  
+  roles:
+    - app

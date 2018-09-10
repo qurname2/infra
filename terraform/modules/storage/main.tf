@@ -1,5 +1,5 @@
 resource "google_storage_bucket" "image-store" {
-  name     = "name_your bucket"
+  name     = "sport-kit"
   location = "EU"
   project  = "${var.project}"
 }

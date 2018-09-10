@@ -1,0 +1,9 @@
+---
+- name: Configure Mongodb
+  hosts: db
+  tags: db-tag
+  gather_facts: no
+    
+  roles:
+    - db    
+
