@@ -11,13 +11,13 @@ variable public_key_path {
   description = "Path to the public key used for ssh access"
 }
 
-variable disk_image {
-  description = "Disk image"
-}
+#variable disk_image {
+#  description = "Disk image"
+#}
 
-variable private_key {
-  description = "This is key using provisioner for ssh connection to instance"
-}
+#variable private_key {
+#  description = "This is key using provisioner for ssh connection to instance"
+#}
 variable port_puma {
   description = "Tcp port for puma server"
 }
