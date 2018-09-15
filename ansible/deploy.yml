@@ -1,21 +1,20 @@
 - name: Deploy App
   hosts: app
   gather_facts: no
-  vars:
-    deploy_user: appuser
   tasks:
     - name: Fetch the latest version of application code
+      become: true
       git:
         repo: 'https://github.com/Artemmkin/reddit.git'
-        dest: /home/{{ deploy_user }}/reddit
+        dest: "/home/{{ deploy_user }}/reddit"
         version: monolith
       notify: restart puma
 
     - name: bundle install
       bundler:
         state: present
-        chdir: /home/{{ deploy_user }}/reddit
-        executable: /home/appuser/.rvm/gems/ruby-2.4.1/bin/bundle
+        chdir: "/home/{{ deploy_user }}/reddit"
+        #executable: "/home/{{ deploy_user }}/.rvm/gems/ruby-2.4.1/bin/bundle"
 
   handlers:
   - name: restart puma
